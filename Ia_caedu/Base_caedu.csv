@@ -1,0 +1,24 @@
+﻿Pergunta,Resposta
+1. Qual o procedimento inicial de uma cobrança?,"
+1. Se identificar com nome e empresa (Lojas Caedu).2. Confirmar os dados do cliente antes de fornecer qualquer informação.3. Apresentar a dívida com data, valor original e valor com desconto.4. Oferecer condições flexíveis de pagamento.5. Manter postura empática e profissional.6. Enviar o boleto imediatamente após o acordo.
+
+"
+2. Como iniciar a ligação?,"“Bom dia/tarde, [Nome do Cliente], tudo bem? Quem fala é [Seu Nome], da central de negociações da Loja Caedu. Estou entrando em contato sobre uma pendência no seu CPF referente a uma compra realizada em [Data da Dívida].”"
+3. Como apresentar a dívida?,"“O valor original da sua dívida é de R$ [valor_original], mas hoje temos uma condição especial: com desconto, você pode quitar por apenas R$ [valor_com_desconto]. Esse valor é válido até [data_limite]. Posso te ajudar a aproveitar essa oportunidade agora mesmo?”"
+4. Cliente diz: “Agora não posso pagar.”,"“Entendo perfeitamente, [Nome]. Qual seria uma condição que se encaixa melhor no seu orçamento hoje?”"
+5.  Cliente diz: “Não tenho interesse.”,“A quitação ajuda a limpar seu nome e evitar cobranças futuras. Posso te mostrar as vantagens de resolver isso agora com o melhor desconto?”
+6. Cliente diz: “Não lembro dessa dívida.”,"“Sem problemas, posso te passar os dados da compra e a data da pendência para te ajudar a lembrar. Foi no dia [data], no valor original de R$ [valor]."
+7.  Cliente diz: “Não recebi cobrança antes.”,"“Essa é nossa central de negociação direta, e estamos te oferecendo agora a melhor oportunidade para resolver com desconto. Posso seguir com o boleto?”"
+8.  Cliente diz: “Vou pensar e depois vejo.”," “O desconto é válido só por hoje. A gente garante o valor e já envia o boleto agora mesmo. Posso contar com você?”"
+" 9. Cliente diz: “Manda o boleto que eu vejo depois.”","“Claro, mas para eu gerar o boleto preciso da sua confirmação de que vai realizar o pagamento até o vencimento. Pode me confirmar agora, por gentileza?”"
+10. Cliente diz: “Estou desempregado.”,"“Sinto muito por essa situação, [Nome]. Podemos tentar uma condição que caiba no seu momento atual, com parcelamento ou desconto maior. Quer que eu veja o que conseguimos para te ajudar?”"
+11. Cliente diz: “Não tenho dinheiro hoje.”,“Entendo. A gente pode agendar para o final do mês ou gerar um boleto com vencimento estendido. Que data seria melhor para você?”
+12.  Cliente diz: “Já paguei essa dívida.”,"“Você pode me confirmar a data e o canal de pagamento? Caso tenha sido quitada, posso abrir uma contestação interna para conferirmos. É rapidinho.”"
+13.  Cliente diz: “Esse valor está errado.,"“Vamos conferir juntos: o valor original era R$ [valor], mas com os encargos acumulados chegou a R$ [valor_atual]. Hoje, com desconto, oferecemos a quitação por R$ [valor_descontado]. Posso emitir o boleto com esse desconto?”"
+14.  Cliente diz: “Vou resolver pessoalmente na loja.”,"“A negociação aqui por telefone é direta com a central, e inclusive temos condições que não estão disponíveis nas lojas. Posso te ajudar agora com mais agilidade e benefícios.”"
+15. Cliente diz: “Não confio em ligação.”,"“Essa ligação é da central oficial de negociações da Loja Caedu. Se preferir, posso te passar nosso canal oficial de atendimento para verificar. Mas posso adiantar as condições aqui também, tudo bem?”"
+"16.  Cliente diz: “Me ligam todo dia, isso é assédio.”","“Sinto muito pelo incômodo, [Nome]. Nossa intenção é apenas oferecer uma solução vantajosa para quitar sua pendência. Podemos resolver isso hoje e encerrar as ligações?”"
+17.  Cliente pergunta: “Como recebo o boleto?”,"“Posso te enviar por WhatsApp, SMS ou e-mail, como preferir. Assim que você confirmar o acordo, o envio é imediato.”"
+18.  Cliente pergunta: “Até quando posso pagar com desconto?”,"“Essa condição especial é válida até [data_limite], mas posso garantir esse valor agora mesmo se você preferir. O que acha de já aproveitar?"
+19.  Cliente pergunta: “Consigo parcelar o valor?”,“Claro! Temos condições de parcelamento em até [número] vezes. O valor das parcelas ficaria em torno de R$ [valor_parcela]. Posso simular para você?”
+,
