@@ -34,15 +34,15 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("🌿 Assistente de Cobrança - Caedu")
+st.title("Assistente de Cobrança - Caedu")
 
 # 📤 Upload de CSV customizado
-uploaded_file = st.file_uploader("📄 Envie o FAQ da Caedu em CSV", type="csv")
-if uploaded_file:
-    file_path = "uploaded_base.csv"
-    with open(file_path, "wb") as f:
-        f.write(uploaded_file.getbuffer())
-else:
+#uploaded_file = st.file_uploader("📄 Envie qualquer Arquivo CSV", type="csv")
+#if uploaded_file:
+    #file_path = "uploaded_base.csv"
+    #with open(file_path, "wb") as f:
+        #f.write(uploaded_file.getbuffer())
+#else:
     file_path = os.path.join(os.path.dirname(__file__), "Base_caedu.csv")
 
 # 📦 Carregar documentos
@@ -96,7 +96,7 @@ if st.button("💡 Gerar resposta"):
         })
 
     st.markdown("### 🧠 Resposta sugerida:")
-    st.markdown(f"<div class='green-container'>{resposta.content}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='white-container'>{resposta.content}</div>", unsafe_allow_html=True)
 
     with st.expander("📚 Trechos usados como base"):
         for i, trecho in enumerate(best_practice, 1):
