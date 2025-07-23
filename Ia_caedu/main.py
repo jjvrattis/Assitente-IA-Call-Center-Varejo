@@ -55,14 +55,38 @@ except Exception as e:
     st.error(f"❌ Erro ao carregar CSV: {e}")
     st.stop()
 
-# 🔍 Embeddings + Vetor
+# 🔍 Embeddings + Vetores com fallback inteligente
 embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
-db = FAISS.from_documents(documents, embeddings)
+retriever_mode = None  # Tipo de mecanismo em uso
+
+try:
+    from langchain_community.vectorstores import Chroma
+    db = Chroma.from_documents(documents, embeddings)
+    retriever_mode = "chroma"
+    st.info("🔗 Vetorização via Chroma ativada.")
+except Exception as e:
+    st.warning(f"⚠️ Chroma falhou ({e}). Tentando FAISS...")
+    try:
+        from langchain_community.vectorstores import FAISS
+        db = FAISS.from_documents(documents, embeddings)
+        retriever_mode = "faiss"
+        st.info("🔗 Vetorização via FAISS ativada.")
+    except Exception as e:
+        st.error(f"❌ Nenhuma vetorização disponível ({e}). Usando busca simples.")
+        db = None
+        retriever_mode = "memory"
 
 # 🔎 Função de busca
 def retrive_info(query):
-    results = db.similarity_search(query, k=3)
-    return [doc.page_content for doc in results]
+    if retriever_mode in ["chroma", "faiss"]:
+        results = db.similarity_search(query, k=3)
+        return [doc.page_content for doc in results]
+    else:
+        return [
+            doc.page_content
+            for doc in documents
+            if query.lower() in doc.page_content.lower()
+        ]
 
 # ✏️ Template de Prompt
 template = """
