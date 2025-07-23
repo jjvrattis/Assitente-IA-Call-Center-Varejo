@@ -98,6 +98,7 @@ llm = ChatOpenAI(temperature=0.5, model="gpt-3.5-turbo", openai_api_key=OPENAI_A
 chain = prompt | llm
 
 # 🧪 Interface
+# 🧪 Interface
 user_input = st.text_area("Digite a dúvida recebida pelo operador:")
 if st.button("💡 Gerar resposta"):
     with st.spinner("Pensando na melhor resposta..."):
@@ -106,13 +107,19 @@ if st.button("💡 Gerar resposta"):
             "message": user_input,
             "best_practice": "\n".join(best_practice)
         })
-# ✅ Salvar dúvida no histórico da sessão
-if "historico" not in st.session_state:
-    st.session_state["historico"] = []
 
-st.session_state["historico"].append(user_input)
+    # ✅ Salvar dúvida no histórico da sessão
+    if "historico" not in st.session_state:
+        st.session_state["historico"] = []
+    st.session_state["historico"].append(user_input)
+
+    # 🧠 Mostrar resposta
     st.markdown("### 🧠 Resposta sugerida:")
     st.markdown(f"<div class='white-container'>{resposta.content}</div>", unsafe_allow_html=True)
+
+    with st.expander("📚 Trechos usados como base"):
+        for i, trecho in enumerate(best_practice, 1):
+            st.markdown(f"**{i}.** {trecho}")
 
     with st.expander("📚 Trechos usados como base"):
         for i, trecho in enumerate(best_practice, 1):
