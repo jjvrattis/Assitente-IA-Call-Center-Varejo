@@ -2,5 +2,5 @@ streamlit
 langchain
 langchain-community
 langchain-openai
-chromadb
+chromadb==0.4.22
 python-dotenv
