@@ -37,13 +37,13 @@ st.markdown("""
 st.title("Pergunte ao Cadu")
 
 # 📤 Upload de CSV customizado
-uploaded_file = st.file_uploader("📄 Envie qualquer Arquivo CSV", type="csv")
-if uploaded_file:
-    file_path = "uploaded_base.csv"
-    with open(file_path, "wb") as f:
-        f.write(uploaded_file.getbuffer())
-else:
-    file_path = os.path.join(os.path.dirname(__file__), "Base_caedu.csv")
+#uploaded_file = st.file_uploader("📄 Envie qualquer Arquivo CSV", type="csv")
+#if uploaded_file:
+    #file_path = "uploaded_base.csv"
+    #with open(file_path, "wb") as f:
+        #if.write(uploaded_file.getbuffer())
+#else:
+file_path = os.path.join(os.path.dirname(__file__), "Base_caedu.csv")
 
 # 📦 Carregar documentos
 try:
