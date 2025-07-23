@@ -34,7 +34,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("Assistente de Cobrança - Caedu")
+st.title("Pergunte ao Cadu")
 
 # 📤 Upload de CSV customizado
 uploaded_file = st.file_uploader("📄 Envie qualquer Arquivo CSV", type="csv")
@@ -49,10 +49,10 @@ else:
 try:
     loader = CSVLoader(file_path=file_path, encoding="latin1")
     documents = loader.load()
-    st.success("✅ Base de dados carregada.")
-except Exception as e:
-    st.error(f"❌ Erro ao carregar CSV: {e}")
-    st.stop()
+    #st.success("✅ Base de dados carregada.")
+#except Exception as e:
+    #st.error(f"❌ Erro ao carregar CSV: {e}")
+    #st.stop()
 
 # 🔎 Função de busca simplificada em memória
 def retrive_info(query):
