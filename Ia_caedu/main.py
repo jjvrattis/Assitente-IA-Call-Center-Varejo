@@ -1,5 +1,4 @@
 import streamlit as st
-from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import CSVLoader
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.prompts import PromptTemplate
@@ -44,7 +43,7 @@ if uploaded_file:
     with open(file_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
 else:
-    file_path = os.path.join(os.path.dirname(__file__), "Base_caedu.csv")  # fallback padrão
+    file_path = os.path.join(os.path.dirname(__file__), "Base_caedu.csv")
 
 # 📦 Carregar documentos
 try:
@@ -55,38 +54,13 @@ except Exception as e:
     st.error(f"❌ Erro ao carregar CSV: {e}")
     st.stop()
 
-# 🔍 Embeddings + Vetores com fallback inteligente
-embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
-retriever_mode = None  # Tipo de mecanismo em uso
-
-try:
-    from langchain_community.vectorstores import Chroma
-    db = Chroma.from_documents(documents, embeddings)
-    retriever_mode = "chroma"
-    st.info("🔗 Vetorização via Chroma ativada.")
-except Exception as e:
-    st.warning(f"⚠️ Chroma falhou ({e}). Tentando FAISS...")
-    try:
-        from langchain_community.vectorstores import FAISS
-        db = FAISS.from_documents(documents, embeddings)
-        retriever_mode = "faiss"
-        st.info("🔗 Vetorização via FAISS ativada.")
-    except Exception as e:
-        st.error(f"❌ Nenhuma vetorização disponível ({e}). Usando busca simples.")
-        db = None
-        retriever_mode = "memory"
-
-# 🔎 Função de busca
+# 🔎 Função de busca simplificada em memória
 def retrive_info(query):
-    if retriever_mode in ["chroma", "faiss"]:
-        results = db.similarity_search(query, k=3)
-        return [doc.page_content for doc in results]
-    else:
-        return [
-            doc.page_content
-            for doc in documents
-            if query.lower() in doc.page_content.lower()
-        ]
+    return [
+        doc.page_content
+        for doc in documents
+        if query.lower() in doc.page_content.lower()
+    ]
 
 # ✏️ Template de Prompt
 template = """
@@ -107,7 +81,6 @@ Sua função é auxiliar com dúvidas de Operadores e revisar scripts.
 
 ✍️ Escreva a melhor resposta possível para apoiar o operador:
 """
-
 prompt = PromptTemplate(input_variables=["message", "best_practice"], template=template)
 llm = ChatOpenAI(temperature=0.5, model="gpt-3.5-turbo", openai_api_key=OPENAI_API_KEY)
 chain = prompt | llm
@@ -122,11 +95,9 @@ if st.button("💡 Gerar resposta"):
             "best_practice": "\n".join(best_practice)
         })
 
-    # 🧠 Mostrar resposta em container verde
     st.markdown("### 🧠 Resposta sugerida:")
     st.markdown(f"<div class='green-container'>{resposta.content}</div>", unsafe_allow_html=True)
 
-    # 📚 Mostrar trechos usados
     with st.expander("📚 Trechos usados como base"):
         for i, trecho in enumerate(best_practice, 1):
             st.markdown(f"**{i}.** {trecho}")
