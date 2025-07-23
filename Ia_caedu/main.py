@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import CSVLoader
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.prompts import PromptTemplate
@@ -57,7 +57,7 @@ except Exception as e:
 
 # 🔍 Embeddings + Vetor
 embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
-db = Chroma.from_documents(documents, embeddings)
+db = Faiss.from_documents(documents, embeddings)
 
 # 🔎 Função de busca
 def retrive_info(query):
