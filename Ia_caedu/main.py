@@ -57,7 +57,7 @@ except Exception as e:
 
 # 🔍 Embeddings + Vetor
 embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
-db = Faiss.from_documents(documents, embeddings)
+db = FAISS.from_documents(documents, embeddings)
 
 # 🔎 Função de busca
 def retrive_info(query):
