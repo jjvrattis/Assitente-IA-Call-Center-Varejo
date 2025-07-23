@@ -44,7 +44,7 @@ if uploaded_file:
     with open(file_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
 else:
-    file_path = "Base_caedu.csv"  # fallback padrão
+    file_path = os.path.join(os.path.dirname(__file__), "Base_caedu.csv")  # fallback padrão
 
 # 📦 Carregar documentos
 try:
