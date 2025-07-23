@@ -116,10 +116,10 @@ if st.button("💡 Gerar resposta"):
     st.markdown("### 🧠 Resposta sugerida:")
     st.markdown(f"<div class='white-container'>{resposta.content}</div>", unsafe_allow_html=True)
 
-    with st.expander("📚 Trechos usados como base"):
-        for i, trecho in enumerate(best_practice, 1):
-            st.markdown(f"**{i}.** {trecho}")
+   # with st.expander("📚 Trechos usados como base"):
+        #for i, trecho in enumerate(best_practice, 1):
+            #st.markdown(f"**{i}.** {trecho}")
 
-    with st.expander("📚 Trechos usados como base"):
-        for i, trecho in enumerate(best_practice, 1):
-            st.markdown(f"**{i}.** {trecho}")
+    #with st.expander("📚 Trechos usados como base"):
+        #for i, trecho in enumerate(best_practice, 1):
+            #st.markdown(f"**{i}.** {trecho}")
