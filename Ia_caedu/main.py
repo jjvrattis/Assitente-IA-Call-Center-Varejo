@@ -8,7 +8,7 @@ import os
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 # 🌿 Estilo personalizado
-st.set_page_config(page_title="Assistente Caedu", layout="centered")
+st.set_page_config(page_title="Assistente Caedu ", layout="centered")
 st.markdown("""
 <style>
     body { background-color: #e7f5ec; }
@@ -34,7 +34,19 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("Pergunte ao Cadu")
+# 🧠 Sidebar com histórico
+with st.sidebar:
+    st.title("📚 Histórico de Dúvidas")
+    
+    # Botão para limpar
+    if st.button("🧹 Limpar histórico"):
+        st.session_state["historico"] = []
+
+    # Mostrar histórico, se existir
+    for i, item in enumerate(st.session_state.get("historico", []), 1):
+        st.markdown(f"**{i}.** {item}")
+
+st.title("Tá com duvida? Pergunte ao Cadu 😉")
 
 # 📤 Upload de CSV customizado
 #uploaded_file = st.file_uploader("📄 Envie qualquer Arquivo CSV", type="csv")
@@ -94,7 +106,11 @@ if st.button("💡 Gerar resposta"):
             "message": user_input,
             "best_practice": "\n".join(best_practice)
         })
+# ✅ Salvar dúvida no histórico da sessão
+if "historico" not in st.session_state:
+    st.session_state["historico"] = []
 
+st.session_state["historico"].append(user_input)
     st.markdown("### 🧠 Resposta sugerida:")
     st.markdown(f"<div class='white-container'>{resposta.content}</div>", unsafe_allow_html=True)
 
