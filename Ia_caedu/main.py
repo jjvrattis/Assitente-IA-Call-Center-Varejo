@@ -50,9 +50,9 @@ try:
     loader = CSVLoader(file_path=file_path, encoding="latin1")
     documents = loader.load()
     #st.success("✅ Base de dados carregada.")
-#except Exception as e:
-    #st.error(f"❌ Erro ao carregar CSV: {e}")
-    #st.stop()
+except Exception as e:
+    st.error(f"❌ Erro ao carregar CSV: {e}")
+    st.stop()
 
 # 🔎 Função de busca simplificada em memória
 def retrive_info(query):
